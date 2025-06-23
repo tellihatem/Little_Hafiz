@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:delayed_display/delayed_display.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -44,35 +45,38 @@ class MainScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 40),
 
-                      // Buttons
-                      _buildMainButton(
+                      // Animated buttons
+                      _buildAnimatedButton(
+                        delay: 0,
                         icon: Icons.menu_book,
                         text: 'احفظ السورة',
-                        color: const Color(0xFF4CAF50), // Green
+                        color: const Color(0xFF4CAF50),
                         onPressed: () {},
                       ),
                       const SizedBox(height: 20),
-                      _buildMainButton(
+                      _buildAnimatedButton(
+                        delay: 1000,
                         icon: Icons.headphones,
                         text: 'استمع وردد',
-                        color: const Color(0xFF2196F3), // Blue
+                        color: const Color(0xFF2196F3),
                         onPressed: () {},
                       ),
                       const SizedBox(height: 20),
-                      _buildMainButton(
+                      _buildAnimatedButton(
+                        delay: 1400,
                         icon: Icons.games,
                         text: 'العاب',
-                        color: const Color(0xFFFF9800), // Orange
+                        color: const Color(0xFFFF9800),
                         onPressed: () {},
                       ),
                       const SizedBox(height: 20),
-                      _buildMainButton(
+                      _buildAnimatedButton(
+                        delay: 1800,
                         icon: Icons.lock,
                         text: 'وضع الوالدين',
-                        color: const Color(0xFF607D8B), // Blue Grey
+                        color: const Color(0xFF607D8B),
                         onPressed: () {},
                       ),
-                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
@@ -84,6 +88,29 @@ class MainScreen extends StatelessWidget {
     );
   }
 
+  // Animated Button Wrapper
+
+  Widget _buildAnimatedButton({
+    required int delay,
+    required IconData icon,
+    required String text,
+    required Color color,
+    required VoidCallback onPressed,
+  }) {
+    return DelayedDisplay(
+      delay: Duration(milliseconds: delay),
+      fadingDuration: const Duration(milliseconds: 600),
+      slidingBeginOffset: const Offset(0.0, 0.3),
+      child: _buildMainButton(
+        icon: icon,
+        text: text,
+        color: color,
+        onPressed: onPressed,
+      ),
+    );
+  }
+
+  // Main Button UI
   Widget _buildMainButton({
     required IconData icon,
     required String text,
