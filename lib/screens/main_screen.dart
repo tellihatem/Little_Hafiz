@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -26,14 +27,13 @@ class MainScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // Title with shadow
-                      const Text(
+                      Text(
                         'الحافظ الصغير',
-                        style: TextStyle(
+                        style: GoogleFonts.notoKufiArabic(
                           fontSize: 42,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'NotoKufiArabic',
                           color: Colors.white,
-                          shadows: [
+                          shadows: const [
                             Shadow(
                               color: Colors.black54,
                               blurRadius: 10,
@@ -54,7 +54,7 @@ class MainScreen extends StatelessWidget {
                       const SizedBox(height: 20),
                       _buildMainButton(
                         icon: Icons.headphones,
-                        text: 'استمع وسجل',
+                        text: 'استمع وردد',
                         color: const Color(0xFF2196F3), // Blue
                         onPressed: () {},
                       ),
@@ -95,10 +95,7 @@ class MainScreen extends StatelessWidget {
       height: 70,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            color,
-            Color.lerp(color, Colors.black, 0.2) ?? color,
-          ],
+          colors: [color, Color.lerp(color, Colors.black, 0.2) ?? color],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -127,20 +124,15 @@ class MainScreen extends StatelessWidget {
           children: [
             Text(
               text,
-              style: const TextStyle(
+              style: GoogleFonts.notoKufiArabic(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'NotoKufiArabic',
                 color: Colors.white,
                 letterSpacing: 0.5,
               ),
             ),
             const SizedBox(width: 15),
-            Icon(
-              icon,
-              size: 32,
-              color: Colors.white,
-            ),
+            Icon(icon, size: 32, color: Colors.white),
           ],
         ),
       ),
